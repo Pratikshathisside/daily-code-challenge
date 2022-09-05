@@ -1,0 +1,36 @@
+//reversing string array using recursion 
+CODE 1:
+class Solution {
+    private:
+    void rev(vector<char> &str,int i,int j){
+        if(i>j){
+            return ;
+        }
+        swap(str[i],str[j]);
+        i++;j--;
+        rev(str,i,j);
+    }
+public:
+    void reverseString(vector<char>& s) {
+        int n = s.size();
+        int st = 0;
+        int e = n -1;
+        return rev(s,st,e );
+        
+    }
+};
+
+CODE 2:
+//reversing using swap function
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int n = s.size();
+        int st = 0;
+        int e = n -1;
+        while (st<=e){
+            swap(s[st++],s[e--]);
+        }
+        
+    }
+};
