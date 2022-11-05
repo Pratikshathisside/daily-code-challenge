@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool found(vector<int> arr,int val){
+    for (int i = 0; i< arr.size(); i++){
+        if(val== arr[i]){
+            return true;
+        }
+    }
+    return false;
+    
+}
+int larg(vector<int>A,int Val){
+    vector<int>ans;
+     for(int i = 0; i<A.size(); i++){
+            if(A[i]<Val){
+                ans.push_back(A[i]);
+            }
+        }
+        int lar = ans[0];
+        for(int i = 0; i<ans.size(); i++){
+            lar = max(lar, ans[i]);
+        }
+        return lar;
+}
+
+
+int lowerBound(vector<int> A, int Val) {
+    // your code goes here
+    //
+    
+    vector <int>ans;
+    if(found(A,Val)){
+        return Val;
+    }
+    else{
+        cout<<larg(A,Val);
+    }
+    return -1;
+    
+}
