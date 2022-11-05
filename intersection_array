@@ -1,0 +1,45 @@
+class Solution {
+public:
+    vector <int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        vector<int>nums;
+        vector<int>num;
+        nums = sort(nums1.begin(),nums1.end());
+        num = sort(nums2.begin(), nums2.end());
+        
+        
+    
+        vector <int> ans;
+        int p=0,q=0;
+        while(p<nums.size()) && q< num.size())){
+            if(nums[p]<num[q]){
+                p++;
+            }
+            else if(nums[p]>num[q]){
+                q++;
+            }
+            else if(
+                nums[p]== num[q]){
+                
+                ans.push_back(nums[p]);
+                p++;
+                q++;
+            }
+        }
+        for(int i = 0; i<ans.size(); i++){
+            for(int j = i+1;j<ans.size(); j++){
+                if(ans[i]==ans[j]){
+                    ans.pop_back();
+                }
+                else{
+                    j++;
+                }
+            }
+           
+        }
+        //set does not provide any subscript.
+        
+        
+        
+        return ans;
+    }
+};
