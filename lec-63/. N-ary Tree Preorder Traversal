@@ -1,0 +1,23 @@
+
+class Solution {
+    private:
+    void func(Node* root, vector<int>& ans){
+        ans.push_back(root->val);
+        for(int i =0; i<root->children.size(); i++){
+            func(root->children[i], ans);
+        }
+    }
+public:
+    vector<int> preorder(Node* root) {
+        //base case 
+        vector<int>ans;
+        if(root==NULL){
+           return ans;
+          
+        }
+        func(root, ans);
+        
+        return ans;
+        
+    }
+};
