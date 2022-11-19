@@ -28,4 +28,4 @@ public:
        return balanced(root).first;
     }
 };
-//time complexit is o(n^2);
+//time complexit is o(n);
