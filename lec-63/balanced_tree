@@ -1,0 +1,31 @@
+class Solution {
+    private:
+   pair<bool,int> balanced(TreeNode* root){
+       //base case 
+       if(root == NULL){
+           pair<bool,int>p = make_pair(true,0);
+           return p;
+       }
+       pair<int,int>right = balanced(root->right);
+       pair<int,int>left =balanced(root->left);
+       
+       bool rans = right.first;
+       bool lans= left.first;
+       
+       bool diff = abs(left.second - right.second)<=1;
+       pair<bool,int>ans;
+       ans.second = max(right.second,left.second) +1;
+       if(rans && lans && diff){
+           ans.first = true;
+       }
+       else{
+           ans.first = false;
+       }
+       return ans;
+   }
+public:
+    bool isBalanced(TreeNode*root) {
+       return balanced(root).first;
+    }
+};
+//time complexit is o(n^2);
