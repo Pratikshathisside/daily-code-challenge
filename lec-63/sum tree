@@ -1,0 +1,35 @@
+class Solution {
+    private:
+    pair<bool,int> sumtree(TreeNode* root){
+        //base case
+        if(root ==NULL){
+            pair<bool,int>p = make_pair(true,0);
+            return p;
+        }
+        //checking for leaf node
+        if(root->left == NULL && root->right == NULL){
+            pair<bool,int>p = make_pair(true, root->val);
+            return p;
+        }
+        //checking if left sum is equal or not 
+        pair<bool,int>leftans = sumtree(root->left);
+        pair<bool,int>rightans = sumtree(root->right);
+        bool left = leftans.first;
+        bool right = rightans.first;
+        bool con = (root->val == rightans.second + leftans.second);
+        pair<bool,int>ans;
+        if(left&& right&& con){
+            ans.first = true;
+            ans.second = root->val + leftans.second + rightans.second;
+            
+        }
+        else{
+            ans.first = false;
+        }
+        return ans;
+    }
+public:
+    bool checkTree(TreeNode* root) {
+        return sumtree(root).first;
+    }
+};
