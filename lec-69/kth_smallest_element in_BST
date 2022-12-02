@@ -1,0 +1,26 @@
+class Solution {
+    int check(TreeNode* root, int &i, int k){
+        //base caase 
+        if(root== NULL){
+            return -1;
+        }
+        //checking for the left part
+        int left = check(root->left, i, k);
+        if(left!=-1){
+            return left ;
+        }
+        i++;
+        if(i==k){
+            return root->val;
+        }
+        //go for right part
+        return check(root->right, i,k);
+    }
+    
+public:
+    int kthSmallest(TreeNode* root, int k) {
+        int i = 0;
+        int ans = check(root,i,k);
+        return ans;
+    }
+};
