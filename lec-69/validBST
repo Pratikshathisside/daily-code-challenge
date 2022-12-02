@@ -1,0 +1,24 @@
+class Solution {
+public:
+   
+    bool ValidBST(TreeNode* root,long min,long max) {
+        //base case 
+        if(root== NULL){
+            return true;
+            
+        }
+       
+        if(root->val<max && root->val >min){
+            bool left = ValidBST(root->left, min, root->val);
+            bool right = ValidBST(root->right,root->val,max);
+            return left && right;
+        }
+        else
+            return false;
+        
+    }
+    bool isValidBST(TreeNode* root) {
+        bool ans = ValidBST(root, LONG_MIN,LONG_MAX);
+        return ans;
+    }
+};
